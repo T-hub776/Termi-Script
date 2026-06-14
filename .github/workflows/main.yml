@@ -1,0 +1,28 @@
+name: Termi-Script Automated Core Test
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  test-interpreter:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Pull the code from your repository
+    - name: Checkout Code Repository
+      uses: actions/checkout@v4
+
+    # 2. Set up a secure Python environment
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-with-version: '3.10'
+
+    # 3. Simulate a terminal user and run your test script
+    - name: Run Termi-Script Core Logic Test
+      run: |
+        python termiscript.py advanced_test.ts
+        
