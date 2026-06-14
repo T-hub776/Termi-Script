@@ -14,8 +14,8 @@ jobs:
     - name: Checkout Code Repository
       uses: actions/checkout@v4
 
-    # This step lists files so you can visually see where they are in the logs
-    - name: Debug File Locations
+    # This lists the main directory files to confirm the folder exists
+    - name: Debug Main Directory
       run: ls -la
 
     - name: Set up Python
@@ -23,7 +23,9 @@ jobs:
       with:
         python-version: '3.10'
 
+    # This jumps into the Termi-Script folder and executes the test script
     - name: Run Termi-Script Core Logic Test
       run: |
-        python ${{ github.workspace }}/termiscript.py ${{ github.workspace }}/advanced_test.ts
+        cd Termi-Script
+        python termiscript.py advanced_test.ts
         
