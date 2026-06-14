@@ -11,18 +11,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # 1. Pull the code from your repository
     - name: Checkout Code Repository
       uses: actions/checkout@v4
 
-    # 2. Set up a secure Python environment
+    # This step lists files so you can visually see where they are in the logs
+    - name: Debug File Locations
+      run: ls -la
+
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
-        python-with-version: '3.10'
+        python-version: '3.10'
 
-    # 3. Simulate a terminal user and run your test script
     - name: Run Termi-Script Core Logic Test
       run: |
-        python termiscript.py advanced_test.ts
+        python ${{ github.workspace }}/termiscript.py ${{ github.workspace }}/advanced_test.ts
         
