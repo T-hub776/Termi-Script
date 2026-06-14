@@ -249,9 +249,10 @@ class TermiScriptInterpreter:
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
-        with open(sys.argv, "r") as f:
+        with open(sys.argv[1], "r") as f:  # <-- Fixed line!
             script_code = f.read()
         interpreter = TermiScriptInterpreter()
         interpreter.run(script_code)
     else:
         print("Usage: termiscript <script.ts>")
+                        
